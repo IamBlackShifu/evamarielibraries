@@ -25,50 +25,331 @@
   
 </head>
 <style>
+/* Enhanced Professional Dashboard Styles */
+:root {
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --success-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    --warning-gradient: linear-gradient(135deg, #fdbb2d 0%, #22c1c3 100%);
+    --info-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --card-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    --card-hover-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+body {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%) !important;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Enhanced Stats Cards */
+.stats-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: var(--card-shadow);
+    transition: all 0.3s ease;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.stats-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--card-hover-shadow);
+}
+
+.stats-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--primary-gradient);
+}
+
+.stats-card .icon-wrapper {
+    background: var(--primary-gradient);
+    width: 70px;
+    height: 70px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -10px;
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.stats-card .icon-wrapper i {
+    font-size: 28px;
+    color: white;
+}
+
+.stats-card .stats-number {
+    font-size: 2.2rem;
+    font-weight: 700;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0.5rem 0;
+}
+
+.stats-card .stats-label {
+    color: #6c757d;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stats-card .stats-footer {
+    background: rgba(102, 126, 234, 0.05);
+    margin: 1rem -1.5rem -1.5rem;
+    padding: 1rem 1.5rem;
+    border-top: 1px solid rgba(102, 126, 234, 0.1);
+}
+
+/* Enhanced Request Queue */
+.request-queue-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: var(--card-shadow);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    overflow: hidden;
+}
+
+.request-queue-header {
+    background: var(--primary-gradient);
+    color: white;
+    padding: 1.5rem;
+    margin: -1.5rem -1.5rem 1.5rem;
+}
+
+.request-queue-header h6 {
+    margin: 0;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.request-item {
+    background: rgba(102, 126, 234, 0.03);
+    border: 1px solid rgba(102, 126, 234, 0.1);
+    border-radius: 15px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.request-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    border-color: rgba(102, 126, 234, 0.3);
+}
+
+.request-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: var(--primary-gradient);
+    border-radius: 0 4px 4px 0;
+}
+
+.request-item .book-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 0.75rem;
+}
+
+.request-item .request-details {
+    font-size: 0.85rem;
+    color: #6c757d;
+    margin-bottom: 0.5rem;
+}
+
+.request-item .request-details strong {
+    color: #2d3748;
+    font-weight: 600;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.btn-approve {
+    background: var(--success-gradient);
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    font-size: 0.85rem;
+}
+
+.btn-approve:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(79, 172, 254, 0.4);
+}
+
+.btn-return {
+    background: var(--secondary-gradient);
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    font-size: 0.85rem;
+}
+
+.btn-return:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(240, 147, 251, 0.4);
+}
+
+/* Enhanced Pagination */
+.pagination-controls {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.pagination-controls button {
+    padding: 0.75rem 1.5rem;
+    background: var(--primary-gradient);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.pagination-controls button:hover:not(.disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.pagination-controls button.disabled {
+    background: #e9ecef;
+    color: #6c757d;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* Enhanced Sidebar */
+.sidenav {
+    background: linear-gradient(180deg, #2d3748 0%, #1a202c 100%) !important;
+    border-radius: 20px !important;
+    box-shadow: var(--card-shadow) !important;
+}
+
+.sidenav .navbar-brand {
+    padding: 1.5rem 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidenav .nav-link {
+    border-radius: 12px;
+    margin: 0.25rem 1rem;
+    padding: 0.75rem 1rem;
+    transition: all 0.3s ease;
+}
+
+.sidenav .nav-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(5px);
+}
+
+/* Enhanced Header */
+.navbar-main {
+    background: white !important;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1) !important;
+    border-radius: 15px !important;
+    margin: 1rem !important;
+}
+
+.breadcrumb {
+    background: transparent !important;
+}
+
+.breadcrumb-item a {
+    color: #667eea !important;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* Clock styling */
+.clock {
+    background: var(--primary-gradient);
+    color: white !important;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+/* Loading states */
+.loading-shimmer {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .stats-card {
+        margin-bottom: 1rem;
+    }
+    
+    .request-item {
+        padding: 1rem;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+    }
+    
     .pagination-controls {
-        margin-top: 20px;
-        display: flex;
-        justify-content: center;
-        gap: 10px; /* Adds uniform spacing between buttons */
+        flex-direction: column;
+        align-items: center;
     }
+}
 
-    .pagination-controls button {
-        padding: 10px 20px;
-        background-color: #007bff;
-        color: white;
-        border: none;
-        border-radius: 25px; /* Rounded buttons */
-        font-size: 14px;
-        font-weight: bold;
-        cursor: pointer;
-        transition: background-color 0.3s ease, transform 0.2s ease;
-        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+/* Add some animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
     }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
-    .pagination-controls button:hover:not(.disabled) {
-        background-color: #0056b3; /* Darker blue on hover */
-        transform: translateY(-2px); /* Lift button slightly */
-    }
+.stats-card {
+    animation: fadeInUp 0.6s ease-out;
+}
 
-    .pagination-controls button.disabled {
-        background-color: #cccccc;
-        color: #666666; /* Grey text for disabled button */
-        cursor: not-allowed;
-        box-shadow: none; /* Remove shadow for disabled state */
-    }
-
-    .pagination-controls button:focus {
-        outline: none;
-        box-shadow: 0px 0px 8px rgba(0, 123, 255, 0.6); /* Focus glow effect */
-    }
-
-    /* Responsive adjustments for smaller screens */
-    @media (max-width: 576px) {
-        .pagination-controls button {
-            padding: 8px 15px;
-            font-size: 12px;
-        }
-    }
+.stats-card:nth-child(1) { animation-delay: 0.1s; }
+.stats-card:nth-child(2) { animation-delay: 0.2s; }
+.stats-card:nth-child(3) { animation-delay: 0.3s; }
 </style>
 
 
@@ -92,15 +373,15 @@
     <div class="container-fluid py-4">
       <div class="row">
         <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
-          <div class="card">
+          <div class="card stats-card">
             <div class="card-header p-3 pt-2">
-              <div class="icon icon-lg icon-shape bg-gradient-info shadow-dark text-center border-radius-xl mt-n4 position-absolute">
-                <i class="material-icons opacity-10">person</i>
+              <div class="icon-wrapper">
+                <i class="material-icons opacity-10">book</i>
               </div>
               <div class="text-end pt-1">
-                <p class="text-sm mb-0 text-capitalize">Last Book Borrowed/Returned</p>
+                <p class="stats-label mb-0">Last Book Activity</p>
                 <!-- displaying last book borrowed/returned on the dashboard -->
-                <h4 class="mb-0"><span id="last-book-title"></span></h4>
+                <h4 class="stats-number mb-0"><span id="last-book-title">Loading...</span></h4>
             </div>
         
             <script>
@@ -118,6 +399,7 @@
         
                         document.getElementById('last-book-title').textContent = lastBookTitle;
                     } catch (error) {
+                        document.getElementById('last-book-title').textContent = 'No Recent Activity';
                         console.error('Error fetching the last book:', error);
                     }
                 }
@@ -126,28 +408,26 @@
                 fetchLastBook();
             </script>
             </div>
-            <hr class="dark horizontal my-0">
-            <div class="card-footer p-3">
+            <div class="stats-footer">
                <!-- displaying transaction time on dasboard -->
-              <p class="mb-0"><span class="text-success text-sm font-weight-bolder" id="transaction-time"> Borrowed</span> | Book Status</p>
+              <p class="mb-0"><span class="text-success font-weight-bolder" id="transaction-time">Recent Activity</span> | Book Status</p>
             </div>
           </div>
         </div>
         <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
-          <div class="card">
+          <div class="card stats-card">
               <div class="card-header p-3 pt-2">
-                  <div class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl mt-n4 position-absolute">
-                      <i class="material-icons opacity-10">money</i>
+                  <div class="icon-wrapper">
+                      <i class="material-icons opacity-10">library_books</i>
                   </div>
                   <div class="text-end pt-1">
-                    <p class="text-sm mb-0 text-capitalize">Total Books In the Library</p>
-                    <h4 id="total-books-count" class="mb-0">Loading...</h4>
+                    <p class="stats-label mb-0">Total Library Books</p>
+                    <h4 id="total-books-count" class="stats-number mb-0">Loading...</h4>
                   </div>
                   
               </div>
-              <hr class="dark horizontal my-0">
-              <div class="card-footer p-3">
-                  <p class="mb-0"><span class="text-success text-sm font-weight-bolder"></span>View Library Books</p>
+              <div class="stats-footer">
+                  <p class="mb-0"><span class="text-info font-weight-bolder">View Collection</span> | All Books</p>
               </div>
           </div>
       </div>
@@ -175,9 +455,17 @@
       
             // Update the HTML content with the total number of books
             const totalBooksElement = document.getElementById('total-books-borrowed');
-            totalBooksElement.textContent = totalBooks || 0; // Display 0 if totalBooks is undefined
+            if (totalBooksElement) {
+              totalBooksElement.textContent = totalBooks || 0; // Display 0 if totalBooks is undefined
+            }
           })
-          .catch(error => console.error('Error fetching booksmeta:', error));
+          .catch(error => {
+            console.error('Error fetching booksmeta:', error);
+            const totalBooksElement = document.getElementById('total-books-borrowed');
+            if (totalBooksElement) {
+              totalBooksElement.textContent = '0';
+            }
+          });
         });
       </script>
 
@@ -206,26 +494,31 @@
             const totalBooksElementcount = document.getElementById('total-books-count');
             totalBooksElementcount.textContent = totalBookscount || 0; // Display 0 if totalBooks is undefined
           })
-          .catch(error => console.error('Error fetching booksmeta:', error));
+          .catch(error => {
+            console.error('Error fetching booksmeta:', error);
+            const totalBooksElementcount = document.getElementById('total-books-count');
+            if (totalBooksElementcount) {
+              totalBooksElementcount.textContent = '0';
+            }
+          });
         });
       </script>
       
         
       <div class="col-xl-4 col-sm-6">
-        <div class="card">
+        <div class="card stats-card">
             <div class="card-header p-3 pt-2">
-                <div class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl mt-n4 position-absolute">
-                    <i class="material-icons opacity-10">receipt_long</i>
+                <div class="icon-wrapper">
+                    <i class="material-icons opacity-10">trending_up</i>
                 </div>
                 <div class="text-end pt-1">
-                    <p class="text-sm mb-0 text-capitalize">Total Books Borrowed</p>
+                    <p class="stats-label mb-0">Books Borrowed</p>
                     <!-- Add an ID to the h4 element to update its content dynamically -->
-                    <h4 id="total-books-borrowed" class="mb-0">Loading...</h4> <!--todays-total-revenue-->
+                    <h4 id="total-books-borrowed" class="stats-number mb-0">Loading...</h4> <!--todays-total-revenue-->
                 </div>
             </div>
-            <hr class="dark horizontal my-0">
-            <div class="card-footer p-3">
-                <p class="mb-0"><span class="text-success text-sm font-weight-bolder"></span>From Inception</p>
+            <div class="stats-footer">
+                <p class="mb-0"><span class="text-warning font-weight-bolder">Since Launch</span> | Total Count</p>
             </div>
         </div>
     </div>
@@ -305,9 +598,10 @@
           </div>
         </div>
         <div class="col-md-12 mt-4">
-          <div class="card">
-            <div class="card-header pb-0 px-3">
-              <h6 class="mb-0">Borrowing Request Details Queue</h6>
+          <div class="card request-queue-card">
+            <div class="request-queue-header">
+              <h6 class="mb-0">📋 Borrowing Request Details Queue</h6>
+              <p class="mb-0 small opacity-8">Manage pending book requests</p>
             </div>
             <div class="card-body pt-4 p-3">
               <ul class="list-group" id="request-queue">
@@ -358,20 +652,19 @@
           const category = attributes.bookdetail[0]?.genre || 'N/A';
 
           const listItem = document.createElement('li');
-          listItem.className =
-            'list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg';
+          listItem.className = 'list-group-item border-0 p-0 mb-3';
 
           listItem.innerHTML = `
-            <div class="d-flex flex-column">
-              <h6 class="mb-3 text-sm">${bookTitle}</h6>
-              <span class="mb-2 text-xs">Requested By: <span class="text-dark font-weight-bold ms-sm-2">${user}</span></span>
-              <span class="mb-2 text-xs">Phone Number: <span class="text-dark ms-sm-2 font-weight-bold">${phoneNumber}</span></span>
-              <span class="mb-2 text-xs">Book Category: <span class="text-dark ms-sm-2 font-weight-bold">${category}</span></span>
-              <span class="mb-2 text-xs">Date Requested: <span class="text-dark ms-sm-2 font-weight-bold">${requestDate}</span></span>
-            </div>
-            <div class="ms-auto text-end">
-              <button class="btn btn-success approve-btn" data-book-id="${attributes.bookdetail[0].id}">Approve</button>
-              <button class="btn btn-danger return-btn" data-book-id="${request.id}">Return</button>
+            <div class="request-item">
+              <div class="book-title">${bookTitle}</div>
+              <div class="request-details">Requested By: <strong>${user}</strong></div>
+              <div class="request-details">Phone Number: <strong>${phoneNumber}</strong></div>
+              <div class="request-details">Category: <strong>${category}</strong></div>
+              <div class="request-details">Date: <strong>${requestDate}</strong></div>
+              <div class="action-buttons">
+                <button class="btn-approve approve-btn" data-book-id="${attributes.bookdetail[0].id}">✓ Approve</button>
+                <button class="btn-return return-btn" data-book-id="${request.id}">↩ Return</button>
+              </div>
             </div>
           `;
           requestQueue.appendChild(listItem);
@@ -387,11 +680,19 @@
   // Update Pagination Controls
   function updatePaginationControls(pagination) {
     const paginationControls = document.getElementById('pagination-controls');
+    const prevDisabled = currentPage === 0 ? 'disabled' : '';
+    const nextDisabled = currentPage + 1 >= pagination.pageCount ? 'disabled' : '';
+    
     paginationControls.innerHTML = `
-      <button ${currentPage === 0 ? 'disabled' : ''} onclick="loadRequests(${currentPage - 1})">Previous</button>
-      <button ${
-        currentPage + 1 >= pagination.pageCount ? 'disabled' : ''
-      } onclick="loadRequests(${currentPage + 1})">Next</button>
+      <button class="${prevDisabled}" onclick="loadRequests(${currentPage - 1})" ${prevDisabled ? 'disabled' : ''}>
+        ← Previous
+      </button>
+      <span style="display: flex; align-items: center; color: #667eea; font-weight: 600; margin: 0 1rem;">
+        Page ${currentPage + 1} of ${pagination.pageCount}
+      </span>
+      <button class="${nextDisabled}" onclick="loadRequests(${currentPage + 1})" ${nextDisabled ? 'disabled' : ''}>
+        Next →
+      </button>
     `;
   }
 
