@@ -103,8 +103,7 @@
             // Initial call to display the clock immediately
             updateClock();
           </script>
-          <ul class="navbar-nav  justify-content-end">
-          
+          <ul class="navbar-nav justify-content-end">
             <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
                 <div class="sidenav-toggler-inner">
@@ -115,24 +114,25 @@
               </a>
             </li>
             <li class="nav-item px-3 d-flex align-items-center">
-              <a href="javascript:;" class="nav-link text-body p-0">
-                <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
+              <a href="javascript:;" class="nav-link text-body p-0" title="Settings">
+                <i class="material-icons cursor-pointer" style="color: #667eea;">settings</i>
               </a>
             </li>
             <li class="nav-item dropdown pe-2 d-flex align-items-center">
-              <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fa fa-bell cursor-pointer"></i>
+              <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false" title="Notifications">
+                <i class="material-icons cursor-pointer" style="color: #667eea;">notifications</i>
               </a>
-              
             </li>
             <li class="nav-item d-flex align-items-center">
-              <button class="btn bg-gradient-info mb-0" onclick="window.location.href='addbook.php'">Add Book</button>
-
-          </li>
-          <li class="nav-item d-flex align-items-center">
-            <button style="margin-left: 10px;" class="btn bg-gradient-info mb-0" onclick="window.location.href='addtoy.php'">Add Toy(s)</button>
-
-        </li>
+              <button class="btn" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 12px; font-weight: 500; padding: 0.5rem 1rem; margin-right: 0.5rem;" onclick="window.location.href='addbook.php'">
+                <i class="material-icons me-1" style="font-size: 1rem;">add</i>Add Book
+              </button>
+            </li>
+            <li class="nav-item d-flex align-items-center">
+              <button class="btn" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; border-radius: 12px; font-weight: 500; padding: 0.5rem 1rem;" onclick="window.location.href='addtoy.php'">
+                <i class="material-icons me-1" style="font-size: 1rem;">toys</i>Add Toy
+              </button>
+            </li>
           </ul>
         </div>
       </div>
